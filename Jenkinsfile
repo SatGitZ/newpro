@@ -8,8 +8,6 @@ pipeline {
     KUBECONFIG = '/var/lib/jenkins/.kube/config'  // added kubeconfig
 }
 
-    }
-
     stages {
         stage('Cloning the Repository') {
             steps {
