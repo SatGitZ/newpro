@@ -1,10 +1,13 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_IMAGE = 'jehp/newpro:latest'  // Modify this to your Docker Hub username/repo
-        DOCKER_REGISTRY = 'docker.io'          // Use your private Docker registry URL
-        K8S_CLUSTER = 'minikube'               // Minikube Kubernetes cluster
+   environment {
+    DOCKER_IMAGE = 'jehp/newpro:latest'
+    DOCKER_REGISTRY = 'docker.io'
+    K8S_CLUSTER = 'minikube'
+    KUBECONFIG = '/var/lib/jenkins/.kube/config'  // added kubeconfig
+}
+
     }
 
     stages {
