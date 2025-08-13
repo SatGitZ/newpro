@@ -1,26 +1,30 @@
 #!/bin/bash
 
-# Start the Flask application inside a Docker container
-docker run -d -p 5000:5000 jehp/newpro:latest
 
+#!/bin/bash
 
-# Wait for the app to start
-sleep 5
+IMAGE_NAME="jehp/newpro:latest"
 
-# Send a GET request to the /add endpoint with two numbers
-response=$(curl -s "http://localhost:5000/add?num1=10&num2=20")
+# Start the container
+docker run -d -p 5000:5000 --name flask-test-container $IMAGE_NAME
+sleep 5  # wait for app to start (increase if needed)
 
-# Expected result
-expected="30.0"
-
-# Compare the response with the expected value
-if [ "$response" == "$expected" ]; then
-  echo "Test Passed: The /add endpoint is working correctly."
-  exit 0
-else
-  echo "Test Failed: Expected $expected but got $response."
+# Optional: Check if container is running
+if ! docker ps | grep -q flask-test-container; then
+  echo "Container failed to start"
   exit 1
 fi
 
-# Clean up the container
-docker rm -f flask-app
+# Send test request
+RESPONSE=$(curl -s --max-time 10 "http://localhost:5000/add?num1=10&num2=20")
+
+EXPECTED="30.0"
+if [ "$RESPONSE" = "$EXPECTED" ]; then
+    echo "Test Passed: $RESPONSE"
+    docker rm -f flask-test-container
+    exit 0
+else
+    echo "Test Failed: Expected $EXPECTED but got $RESPONSE"
+    docker rm -f flask-test-container
+    exit 1
+fi
