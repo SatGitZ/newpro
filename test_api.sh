@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Start the Flask application inside a Docker container
-docker run -d -p 5000:5000 --name flask-app myusername/flask-app
+docker run -d -p 5000:5000 jehp/newpro:latest
+
 
 # Wait for the app to start
 sleep 5
