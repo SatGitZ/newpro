@@ -51,7 +51,8 @@ pipeline {
             steps {
                 script {
                     // Deploy the app to Minikube Kubernetes cluster
-                    sh 'kubectl apply -f k8s/deployment.yaml'
+                    sh 'kubectl apply -f deployment.yaml'
+                     sh  'kubectl apply -f service.yaml'
                 }
             }
         }
