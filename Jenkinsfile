@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     // Run tests inside the Docker container
-                    sh './test_api.sh'
+                    sh ' chmod +x test_api.sh && ./test_api.sh'
                 }
             }
         }
