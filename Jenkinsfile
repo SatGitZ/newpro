@@ -2,7 +2,7 @@ pipeline {
     agent any
 
    environment {
-    DOCKER_IMAGE = 'jehp/newpro:latest'
+    DOCKER_IMAGE = 'satven/newpro:latest'
     DOCKER_REGISTRY = 'docker.io'
     K8S_CLUSTER = 'minikube'
     KUBECONFIG = '/var/lib/jenkins/.kube/config'  // added kubeconfig

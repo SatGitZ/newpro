@@ -1,5 +1,5 @@
 #!/bin/bash
-IMAGE_NAME="jehp/newpro:latest"
+IMAGE_NAME="satven/newpro:latest"
 CONTAINER_NAME="flask-test-container"
 
 # Clean up any previous container with the same name

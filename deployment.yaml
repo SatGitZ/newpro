@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: jehp/newpro:latest  # Use your pushed image here
+          image: satven/newpro:latest  # Use your pushed image here
           ports:
             - containerPort: 5000
